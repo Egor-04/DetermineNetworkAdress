@@ -14,6 +14,7 @@ namespace Determine_Network_Adress
 {
     public partial class MainWindow : Window
     {
+        private const int _maxBitsBinaryAddress = 32;
         private const int _maxOctetsCount = 4;
         private readonly int[] _bits = [128, 64, 32, 16, 8, 4, 2, 1];
         
@@ -243,6 +244,24 @@ namespace Determine_Network_Adress
             }
         }
 
+        private (string,string) FindAddressesCount(string binaryMaskAddress)
+        {
+            int maskBitsCount = 0;
+            int addressCounts = 0;
+
+            for (int i = 0; i < binaryMaskAddress.Length; i++)
+            {
+                if (binaryMaskAddress[i] == '1')
+                {
+                    maskBitsCount++;
+                }
+            }
+
+            addressCounts = 1 << (_maxBitsBinaryAddress - maskBitsCount);
+
+            return (addressCounts.ToString(), (addressCounts - 2).ToString());
+        }
+
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             
@@ -254,6 +273,7 @@ namespace Determine_Network_Adress
             TextBox_BinaryMaskAdressResult.Text = ConvertIPAdressToBinaryCode(TextBox_MaskAdress.Text);
             TextBox_BinaryAddressToIntResult.Text = LogicalAND(TextBox_BinaryNetAdressResult.Text, TextBox_BinaryMaskAdressResult.Text);
             TextBox_ServiceAddressResult.Text = ConvertBinaryIPAdressToInt(TextBox_BinaryAddressToIntResult.Text);
+            (TextBox_AddressCountResult.Text, TextBox_ActualAddressesCount.Text) = FindAddressesCount(TextBox_BinaryMaskAdressResult.Text);
         }
 
         private void TextBox_BinaryNetAdressResult_TextChanged(object sender, TextChangedEventArgs e)
@@ -272,6 +292,11 @@ namespace Determine_Network_Adress
         }
 
         private void TextBox_ServiceAddressResult_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void TextBox_ActualAddressesCount_TextChanged(object sender, TextChangedEventArgs e)
         {
 
         }

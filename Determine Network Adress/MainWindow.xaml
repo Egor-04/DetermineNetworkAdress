@@ -315,6 +315,94 @@
                 </MultiTrigger>
             </Style.Triggers>
         </Style>
+        <SolidColorBrush x:Key="TextBox.Static.Border7" Color="#FFABAdB3"/>
+        <SolidColorBrush x:Key="TextBox.MouseOver.Border7" Color="#FF7EB4EA"/>
+        <SolidColorBrush x:Key="TextBox.Focus.Border7" Color="#FF569DE5"/>
+        <Style x:Key="TextBoxStyle8" TargetType="{x:Type TextBox}">
+            <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource TextBox.Static.Border7}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="AllowDrop" Value="true"/>
+            <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
+            <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TextBox}">
+                        <Border x:Name="border" Background="{TemplateBinding Background}" CornerRadius="12" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="True">
+                            <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Opacity" TargetName="border" Value="0.56"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource TextBox.MouseOver.Border7}"/>
+                            </Trigger>
+                            <Trigger Property="IsKeyboardFocused" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource TextBox.Focus.Border7}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <MultiTrigger>
+                    <MultiTrigger.Conditions>
+                        <Condition Property="IsInactiveSelectionHighlightEnabled" Value="true"/>
+                        <Condition Property="IsSelectionActive" Value="false"/>
+                    </MultiTrigger.Conditions>
+                    <Setter Property="SelectionBrush" Value="{DynamicResource {x:Static SystemColors.InactiveSelectionHighlightBrushKey}}"/>
+                </MultiTrigger>
+            </Style.Triggers>
+        </Style>
+        <SolidColorBrush x:Key="TextBox.Static.Border8" Color="#FFABAdB3"/>
+        <SolidColorBrush x:Key="TextBox.MouseOver.Border8" Color="#FF7EB4EA"/>
+        <SolidColorBrush x:Key="TextBox.Focus.Border8" Color="#FF569DE5"/>
+        <Style x:Key="TextBoxStyle9" TargetType="{x:Type TextBox}">
+            <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource TextBox.Static.Border8}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="AllowDrop" Value="true"/>
+            <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
+            <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TextBox}">
+                        <Border x:Name="border" Background="{TemplateBinding Background}" CornerRadius="12" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="True">
+                            <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Opacity" TargetName="border" Value="0.56"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource TextBox.MouseOver.Border8}"/>
+                            </Trigger>
+                            <Trigger Property="IsKeyboardFocused" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource TextBox.Focus.Border8}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <MultiTrigger>
+                    <MultiTrigger.Conditions>
+                        <Condition Property="IsInactiveSelectionHighlightEnabled" Value="true"/>
+                        <Condition Property="IsSelectionActive" Value="false"/>
+                    </MultiTrigger.Conditions>
+                    <Setter Property="SelectionBrush" Value="{DynamicResource {x:Static SystemColors.InactiveSelectionHighlightBrushKey}}"/>
+                </MultiTrigger>
+            </Style.Triggers>
+        </Style>
     </Window.Resources>
     <Grid>
         <Grid.Background>
@@ -337,6 +425,10 @@
         <TextBox x:Name="TextBox_ServiceAddressResult" Style="{DynamicResource TextBoxStyle7}" HorizontalAlignment="Left" Margin="171,273,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="354" Height="30" TextChanged="TextBox_ServiceAddressResult_TextChanged" FontSize="16"/>
         <Label Content="Service Address" HorizontalAlignment="Left" Margin="10,269,0,0" VerticalAlignment="Top" Foreground="White" Width="156" Height="38" Background="Transparent" FontSize="16" ScrollViewer.HorizontalScrollBarVisibility="Visible" UseLayoutRounding="False"/>
         <TextBox x:Name="TextBox_Debug" HorizontalAlignment="Left" Margin="10,0,0,10" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="774" Height="55"/>
+        <TextBox x:Name="TextBox_AddressCountResult" Style="{DynamicResource TextBoxStyle8}" HorizontalAlignment="Left" Margin="288,334,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="23"/>
+        <Label Content="Theorethical Addresses Count" HorizontalAlignment="Left" Margin="54,330,0,0" VerticalAlignment="Top" Foreground="White" Width="229" Height="30" Background="Transparent" FontSize="16" ScrollViewer.HorizontalScrollBarVisibility="Visible" UseLayoutRounding="False"/>
+        <TextBox x:Name="TextBox_ActualAddressesCount" Style="{DynamicResource TextBoxStyle9}" HorizontalAlignment="Left" Margin="288,368,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="26" TextChanged="TextBox_ActualAddressesCount_TextChanged"/>
+        <Label Content="Actual Count" HorizontalAlignment="Left" Margin="168,368,0,0" VerticalAlignment="Top" Foreground="White" Width="114" Height="30" Background="Transparent" FontSize="16" ScrollViewer.HorizontalScrollBarVisibility="Visible" UseLayoutRounding="False"/>
 
     </Grid>
 </Window>
